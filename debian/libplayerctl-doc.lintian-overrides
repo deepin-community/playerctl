@@ -1,0 +1,9 @@
+# Documentation installed into /usr/share/gtk-doc/...
+package-contains-documentation-outside-usr-share-doc usr/share/gtk-doc/html/playerctl/PlayerctlPlayer.html
+package-contains-documentation-outside-usr-share-doc usr/share/gtk-doc/html/playerctl/PlayerctlPlayerManager.html
+package-contains-documentation-outside-usr-share-doc usr/share/gtk-doc/html/playerctl/annotation-glossary.html
+package-contains-documentation-outside-usr-share-doc usr/share/gtk-doc/html/playerctl/api-index-full.html
+package-contains-documentation-outside-usr-share-doc usr/share/gtk-doc/html/playerctl/ch01.html
+package-contains-documentation-outside-usr-share-doc usr/share/gtk-doc/html/playerctl/index.html
+package-contains-documentation-outside-usr-share-doc usr/share/gtk-doc/html/playerctl/object-tree.html
+package-contains-documentation-outside-usr-share-doc usr/share/gtk-doc/html/playerctl/playerctl-playerctl-player-name.html

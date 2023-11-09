@@ -1,0 +1,17 @@
+playerctl (2.0.1-1) unstable; urgency=medium
+
+  playerctl 2.0.1 is a major release, and includes the following BREAKING
+  CHANGES in the CLI and library:
+
+  CLI:
+  - the `--player` command acts on the first player without `--all-players`
+  - the `metadata` command now has tabular output
+
+  Library:
+  - chaining abilities are removed from the library
+  - library query functions now return `NULL` instead of empty string when
+    properties aren't found
+  - the first keyword arg for `playerctl_player_new()` is changed from `name`
+    to `player_name`
+
+ -- Nick Morrott <knowledgejunkie@gmail.com>  Sat, 19 Jan 2019 02:00:01 +0000

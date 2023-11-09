@@ -1,0 +1,53 @@
+% PLAYERCTLD(1) __VERSION__ | User Commands
+% 
+% November 2020
+
+# NAME
+
+**playerctld** - maintain an ordered list of controllable media players for playerctl
+
+# SYNOPSIS
+
+| **playerctld** \[**OPTION**\] **COMMAND**
+
+| **playerctld** **\-\-help**
+
+# DESCRIPTION
+
+**playerctld** runs as a user-controlled daemon, monitoring controllable media
+players for **playerctl** in the order that they are started. **playerctld** allows
+a user to navigate forwards and backwards through the list of available media
+players using the shift and unshift commands.
+
+# COMMANDS
+
+daemon
+:   start playerctld as a daemon
+
+shift
+:   shift to next controllable player
+
+unshift
+:   unshift to previous controllable player
+
+# OPTIONS
+
+-h, \-\-help
+:   show usage details and exit
+
+# REPORTING BUGS
+
+Upstream bug tracker: https://github.com/altdesktop/playerctl/issues
+
+# COPYRIGHT
+
+Copyright (c) Tony Crisci
+
+# AUTHOR
+
+This manual page is based on the playerctld program. It was created by Nick Morrott <nickm@debian.org> for the Debian GNU/Linux system, but may be used by others
+
+# SEE ALSO
+
+**playerctl**(1)
+
