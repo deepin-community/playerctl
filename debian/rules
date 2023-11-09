@@ -1,4 +1,53 @@
 #!/usr/bin/make -f
 
+include /usr/share/dpkg/pkg-info.mk
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+export DEB_LDFLAGS_MAINT_APPEND = -Wl,-z,defs
+
+PKGDIR=$(CURDIR)/debian/playerctl/
+
+ignored_libraries := -Xlibplayerctl.a
+
 %:
-	dh $@
+	dh $@ --with gir --buildsystem=meson
+
+override_dh_auto_build:
+	dh_auto_build
+	# build custom manpage for playerctld
+	@echo DEB_VERSION_UPSTREAM $(DEB_VERSION_UPSTREAM)
+	sed -e "s/__VERSION__/$(DEB_VERSION_UPSTREAM)/g" \
+				< debian/playerctld.1.md.in > debian/playerctld.1.md
+	pandoc debian/playerctld.1.md -s -f markdown -t man -o debian/playerctld.1
+
+# Disable tests: awaiting packaging of python3-dbus-next
+#
+#TESTHOMEDIR = $(CURDIR)/debian/testhome
+#
+#override_dh_auto_test:
+#ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+#	mkdir -p $(TESTHOMEDIR)
+#	XDG_RUNTIME_DIR=$(TESTHOMEDIR) dbus-run-session -- PYTHONPATH=. python3 -m pytest test
+#endif
+
+# All binary packages get the upstream changelog
+override_dh_installchangelogs:
+	dh_installchangelogs -A CHANGELOG.md
+
+override_dh_install:
+	dh_install ${ignored_libraries}
+	# Install zsh completions
+	mkdir -p $(PKGDIR)/usr/share/zsh/vendor-completions/
+	install -m0644 -p $(CURDIR)/data/playerctl.zsh \
+		$(PKGDIR)/usr/share/zsh/vendor-completions/_playerctl
+	# install bash completions
+	mkdir -p $(PKGDIR)/usr/share/bash-completion/completions/
+	install -m0644 -p $(CURDIR)/data/playerctl.bash \
+		$(PKGDIR)/usr/share/bash-completion/completions/playerctl
+
+override_dh_missing:
+	dh_missing ${ignored_libraries} --fail-missing
+
+override_dh_clean:
+	rm -rf $(TESTHOMEDIR)
+	dh_clean

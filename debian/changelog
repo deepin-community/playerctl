@@ -1,5 +1,151 @@
-template-repository (1.0-1) unstable; urgency=medium
+playerctl (2.4.1-2) unstable; urgency=medium
 
-  * Initial release
+  * d/control:
+    - Drop Suggests for xmms2 (Closes: #1009930)
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Nick Morrott <nickm@debian.org>  Sun, 24 Apr 2022 04:46:23 +0100
+
+playerctl (2.4.1-1) unstable; urgency=medium
+
+  * New upstream version 2.4.1
+  * d/control:
+    - Update standards version to 4.6.0, no changes needed.
+    - Bump minimum version of meson required in B-D
+  * d/copyright:
+    - Refresh years of Debian copyright
+    - Use 4 digits in Debian copyright year range
+  * d/gbp.conf:
+    - Rename master branch to debian/master
+  * d/patches:
+    - Drop patch spelling-error-in-binary (applied upstream)
+  * d/rules:
+    - Avoid explicitly specifying -Wl,--as-needed linker flag.
+  * d/u/metadata:
+    - Set upstream metadata fields: Bug-Database.
+    - Remove unknown field Bug-Repository
+  * d/watch:
+    - Update pattern for GitHub archive URLs
+
+ -- Nick Morrott <nickm@debian.org>  Thu, 03 Feb 2022 03:06:48 +0000
+
+playerctl (2.3.1-1) unstable; urgency=medium
+
+  [ Edward Betts ]
+  * Upstream GitHub repo has moved, update URL.
+
+  [ Nick Morrott ]
+  * New upstream version 2.3.1
+  * d/control:
+    - Declare compliance with Debian Policy 4.5.1
+    - Bump debhelper compatibility level to 13
+    - Refresh B-D with updated meson requirement
+    - Add Rules-Requires-Root field, set to no
+    - Refresh Uploader email address
+    - Add mpv to list of controllable players
+    - Add scaffolding for build tests
+  * d/copyright:
+    - Refresh upstream Files stanzas for updated source
+    - Refresh years of Debian copyright and email address
+  * d/libplayerctl-doc.lintian-overrides:
+    - Add overrides for gtk-doc content
+  * d/patches:
+    - Add patch spelling-error-in-binary
+    - Add patch bash-completion-with-hashbang
+  * d/playerctl.install:
+    - Install playerctld and D-Bus service
+  * d/playerctld.1:
+    - Add manpage for playerctld binary
+  * d/rules:
+    - Install bash/zsh playerctl completions
+  * d/salsa-ci.yml:
+    - Add Salsa CI pipeline
+  * d/t/control:
+    - Mark autopkgtest as superficial
+  * d/u/metadata:
+    - Remove deprecated Contact, Name fields
+  * d/watch:
+    - Update watchfile to use v4 substitution variables
+
+ -- Nick Morrott <nickm@debian.org>  Sun, 07 Feb 2021 21:26:41 +0000
+
+playerctl (2.0.2-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * Use debhelper-compat instead of debian/compat
+  * Bump Standards-Version to 4.4.0
+
+  [ Nick Morrott ]
+  * New upstream version 2.0.2
+  * Drop patch update-manpage-date (applied upstream)
+  * Update watch file template
+
+ -- Nick Morrott <knowledgejunkie@gmail.com>  Thu, 15 Aug 2019 06:15:24 +0100
+
+playerctl (2.0.1-1) unstable; urgency=medium
+
+  * New upstream version 2.0.1
+  * d/control: migrate packaging to Debian Multimedia team
+  * d/control: reformat/resort dependency lists
+  * d/{control,rules}: migrate buildsystem to meson
+  * d/control: declare compliance with Debian Policy 4.3.0
+  * d/{control,compat}: bump debhelper compatibility level to 12
+  * d/copyright: refresh Debian copyright years
+  * d/copyright: refresh upstream copyright details
+  * d/patches: drop autotools patch (upstream switched to meson)
+  * d/{control,rules,*.install}: refresh package layout
+  * d/playerctl.examples: install example control scripts
+  * d/NEWS: detail breaking changes
+  * d/gbp.conf: use pristine-tar
+  * d/patches: add update-manpage-date
+  * d/tests: add simple autopkgtest to check CLI at runtime
+  * Drop symbols file
+
+ -- Nick Morrott <knowledgejunkie@gmail.com>  Sun, 20 Jan 2019 18:48:57 +0000
+
+playerctl (0.6.1-1.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * d/p/build-Use-PKG_CHECK_VAR-to-check-for-gdbus-codegen.patch:
+    Use PKG_CHECK_VAR to check for gdbus-codegen.
+    This is the upstream-recommended pattern for detecting gdbus-codegen
+    in an Autotools build system, and it fixes failure to build from source
+    with recent versions of GLib, in which
+    `$PKG_CONFIG --variable=gdbus_codegen gio-2.0` returns an absolute
+    path that is not a valid input to AC_PATH_PROG. (Closes: #910342)
+
+ -- Simon McVittie <smcv@debian.org>  Wed, 10 Oct 2018 09:09:00 +0100
+
+playerctl (0.6.1-1) unstable; urgency=medium
+
+  * New upstream version 0.6.1
+  * debian/control:
+    - declare compliance with Debian Policy 4.2.0 (no changes)
+    - migrate Vcs-* fields to salsa.debian.org
+  * debian/patches:
+    - Drop 0001-manpage-version.patch (applied upstream)
+
+ -- Nick Morrott <knowledgejunkie@gmail.com>  Wed, 22 Aug 2018 23:24:26 +0100
+
+playerctl (0.6.0-1) unstable; urgency=medium
+
+  * New upstream version 0.6.0
+  * debian/copyright: refresh for 0.6.0 release
+  * debian/patches:
+    - Drop 0001-fix-parallel-build.patch (applied upstream)
+    - Drop 0002-add-upstream-changelog.patch (applied upstream)
+    - Drop 0003-rename-gir-files.patch (applied upstream)
+    - Drop 0004-playerctl-manpage.patch (applied upstream)
+    - Add 0001-manpage-version.patch
+  * debian/rules:
+    - remove unnecessary comments
+    - refactor ignored libraries into variable
+    - update for new upstream changelog
+    - set DPKG_GENSYMBOLS_CHECK_LEVEL = 4 to strongly interrogate symbols
+
+ -- Nick Morrott <knowledgejunkie@gmail.com>  Tue, 22 May 2018 09:37:13 +0100
+
+playerctl (0.5.0-1) unstable; urgency=medium
+
+  * Initial release (Closes: #818044)
+
+ -- Nick Morrott <knowledgejunkie@gmail.com>  Sat, 14 Apr 2018 04:08:27 +0100

@@ -1,22 +1,64 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: template-repository
-Source: https://github.com/deepin-community/template-repository
+Upstream-Contact: Tony Crisci <tony@dubstepdish.com>
+Upstream-Name: playerctl
+Source: https://github.com/altdesktop/playerctl
 
 Files: *
-Copyright: 2023 Tsic404 <liuheng@deepin.org>
-License: GPL-2+
- This package is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
- (at your option) any later version.
+Copyright: 2014, Tony Crisci <tony@dubstepdish.com>
+License: LGPL-3.0+
+
+Files: playerctl/playerctl-cli.c
+       playerctl/playerctl-common.c
+       playerctl/playerctl-common.h
+       playerctl/playerctl-formatter.h
+       playerctl/playerctl.h
+       playerctl/playerctl-player.c
+       playerctl/playerctl-player.h
+       playerctl/playerctl-player-manager.c
+       playerctl/playerctl-player-manager.h
+       playerctl/playerctl-player-name.c
+       playerctl/playerctl-player-name.h
+       playerctl/playerctl-player-private.h
+       playerctl/playerctl-version.h.in
+Copyright: 2014, Tony Crisci <tony@dubstepdish.com> and contributors
+License: LGPL-3.0+
+
+Files: CHANGELOG.md
+       CONTRIBUTORS
+       data/*
+       doc/meson.build
+       doc/reference/*
+       examples/*
+       fpm-packages.sh
+       meson.build
+       meson_options.txt
+       playerctl/meson.build
+       playerctl/playerctl-daemon.c
+       playerctl/playerctl-enum-types.c.in
+       playerctl/playerctl-enum-types.h.in
+       playerctl/playerctl-formatter.c
+Copyright: None
+License: LGPL-3.0+
+Comment:
+ Assume same license as playerctl source code.
+
+Files: debian/*
+Copyright: 2018-2022, Nick Morrott <nickm@debian.org>
+License: LGPL-3.0+
+
+License: LGPL-3.0+
+ This package is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 3 of the License, or (at your option) any later version.
  .
  This package is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
  .
- You should have received a copy of the GNU General Public License
- along with this program. If not, see <https://www.gnu.org/licenses/>
+ You should have received a copy of the GNU Lesser General Public License
+ along with this program. If not, see <https://www.gnu.org/licenses/>.
  .
- On Debian systems, the complete text of the GNU General
- Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
+ On Debian systems, the complete text of the GNU Lesser General
+ Public License can be found in "/usr/share/common-licenses/LGPL-3".

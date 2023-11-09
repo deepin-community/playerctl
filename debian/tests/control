@@ -1,0 +1,3 @@
+Depends: @
+Tests: playerctl-cli
+Restrictions: superficial

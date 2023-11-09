@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+# Test the playerctl CLI
+
+set -e
+
+retval=0
+
+success() { echo "success:" "$@"; }
+error() { echo "error:" "$@"; retval=1; }
+
+if playerctl  --version ; then
+    success "playerctl CLI worked"
+else
+    error "playerctl CLI did not run"
+fi
+
+exit $retval
